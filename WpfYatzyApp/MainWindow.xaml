@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfYatzyApp"
         mc:Ignorable="d"
-        Title="Yatzy Game" Height="600" Width="800">
+        Title="Yatzy Game" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -28,17 +28,42 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Ones</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Twos</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Threes</TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Fours</TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Fives</TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Sixes</TextBlock>
+            <TextBlock Grid.Row="7" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Sum (63)</TextBlock>
+            <TextBlock Grid.Row="8" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Bonus</TextBlock>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Ones</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Twos</TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Threes</TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Fours</TextBlock>
-            <TextBlock Grid.Row="4" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Fives</TextBlock>
-            <TextBlock Grid.Row="5" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Sixes</TextBlock>
-            <TextBlock Grid.Row="6" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Sum</TextBlock>
+            <TextBlock Grid.Row="9" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">1 Pair</TextBlock>
+            <TextBlock Grid.Row="10" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">2 Pair</TextBlock>
+            <TextBlock Grid.Row="11" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">3 of a Kind</TextBlock>
+            <TextBlock Grid.Row="12" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">4 of a Kind</TextBlock>
+            <TextBlock Grid.Row="13" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Small Straight</TextBlock>
+            <TextBlock Grid.Row="14" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Large Straight</TextBlock>
+            <TextBlock Grid.Row="15" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Full House</TextBlock>
+            <TextBlock Grid.Row="16" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Chance</TextBlock>
+            <TextBlock Grid.Row="17" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">YATZY</TextBlock>
 
-            <Button Name="ResetGame_Button" Click="ResetGame_Button_Click" Grid.Row="6" Grid.Column="0" FontSize="16" HorizontalAlignment="Left" Margin="15" Padding="5" FontWeight="Bold">Reset</Button>
+            <TextBlock Grid.Row="18" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Sum</TextBlock>
+
+            <Button Name="ResetGame_Button" Click="ResetGame_Button_Click" Grid.Row="18" Grid.Column="0" FontSize="16" HorizontalAlignment="Left" Margin="5,5" Padding="3,2" FontWeight="Bold">Reset</Button>
 
         </Grid>
 
@@ -54,22 +79,60 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Score</TextBlock>
             <Button Name="OnesTotal_Button" Content="{Binding Path=OnesTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="OnesTotal_Button_Click" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="OnesTotal_Button_Click" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
             <Button Name="TwosTotal_Button" Content="{Binding Path=TwosTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="TwosTotal_Button_Click" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="TwosTotal_Button_Click" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
             <Button Name="ThreesTotal_Button" Content="{Binding Path=ThreesTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="ThreesTotal_Button_Click" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="ThreesTotal_Button_Click" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
             <Button Name="FoursTotal_Button" Content="{Binding Path=FoursTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="FoursTotal_Button_Click" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="FoursTotal_Button_Click" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
             <Button Name="FivesTotal_Button" Content="{Binding Path=FivesTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="FivesTotal_Button_Click" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="FivesTotal_Button_Click" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
             <Button Name="SixesTotal_Button" Content="{Binding Path=SixesTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    Click="SixesTotal_Button_Click" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="30,20"></Button>
+                    Click="SixesTotal_Button_Click" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <TextBlock Text="{Binding Path=SmallSumTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding Path=BonusValue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+
+
+            <Button Name="OnePairTotal_Button" Content="{Binding Path=OnePairTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="OnePairTotal_Button_Click" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="TwoPairTotal_Button" Content="{Binding Path=TwoPairTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="TwoPairTotal_Button_Click" Grid.Row="10" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="ThreeOfAKindTotal_Button" Content="{Binding Path=ThreeOfAKindTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="ThreeOfAKindTotal_Button_Click" Grid.Row="11" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="FourOfAKindTotal_Button" Content="{Binding Path=FourOfAKindTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="FourOfAKindTotal_Button_Click" Grid.Row="12" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="SmallStraightTotal_Button" Content="{Binding Path=SmallStraightTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="SmallStraightTotal_Button_Click" Grid.Row="13" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="LargeStraightTotal_Button" Content="{Binding Path=LargeStraightTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="LargeStraightTotal_Button_Click" Grid.Row="14" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="FullHouseTotal_Button" Content="{Binding Path=FullHouseTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="FullHouseTotal_Button_Click" Grid.Row="15" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="ChanceTotal_Button" Content="{Binding Path=ChanceTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="ChanceTotal_Button_Click" Grid.Row="16" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+            <Button Name="YatzyTotal_Button" Content="{Binding Path=YatzyTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                    Click="YatzyTotal_Button_Click" Grid.Row="17" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Padding="3,2"></Button>
+
             <TextBlock Text="{Binding Path=SumTotal, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextAlignment="Center" HorizontalAlignment="Center" 
-                    Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+                    Grid.Row="18" Grid.Column="0" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
 
         </Grid>
 
@@ -85,22 +148,35 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             
-            <ToggleButton Name="ToggleButton1" Content="{Binding Path=Dice1.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="0" Grid.Column="0"
-                      FontSize="22" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" ToggleButton.Checked="ToggleButton1_Checked" ToggleButton.Unchecked="ToggleButton1_Unchecked"></ToggleButton>
-            <ToggleButton Name="ToggleButton2" Content="{Binding Path=Dice2.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"
-                      FontSize="22" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" ToggleButton.Checked="ToggleButton2_Checked" ToggleButton.Unchecked="ToggleButton2_Unchecked"></ToggleButton>
-            <ToggleButton Name="ToggleButton3" Content="{Binding Path=Dice3.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="2" Grid.Column="0" 
-                      FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" ToggleButton.Checked="ToggleButton3_Checked" ToggleButton.Unchecked="ToggleButton3_Unchecked"></ToggleButton>
-            <ToggleButton Name="ToggleButton4" Content="{Binding Path=Dice4.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="3" Grid.Column="0"
-                      FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" ToggleButton.Checked="ToggleButton4_Checked" ToggleButton.Unchecked="ToggleButton4_Unchecked"></ToggleButton>
-            <ToggleButton Name="ToggleButton5"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" Content="{Binding Path=Dice5.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="4" Grid.Column="0"
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Dices</TextBlock>
+            <ToggleButton Name="ToggleButton1" Content="{Binding Path=Dice1.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"
+                      FontSize="22" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3,2" ToggleButton.Checked="ToggleButton1_Checked" ToggleButton.Unchecked="ToggleButton1_Unchecked"></ToggleButton>
+            <ToggleButton Name="ToggleButton2" Content="{Binding Path=Dice2.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="2" Grid.Column="0"
+                      FontSize="22" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3,2" ToggleButton.Checked="ToggleButton2_Checked" ToggleButton.Unchecked="ToggleButton2_Unchecked"></ToggleButton>
+            <ToggleButton Name="ToggleButton3" Content="{Binding Path=Dice3.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" 
+                      FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3,2" ToggleButton.Checked="ToggleButton3_Checked" ToggleButton.Unchecked="ToggleButton3_Unchecked"></ToggleButton>
+            <ToggleButton Name="ToggleButton4" Content="{Binding Path=Dice4.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="4" Grid.Column="0"
+                      FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3,2" ToggleButton.Checked="ToggleButton4_Checked" ToggleButton.Unchecked="ToggleButton4_Unchecked"></ToggleButton>
+            <ToggleButton Name="ToggleButton5"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3,2" Content="{Binding Path=Dice5.Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="5" Grid.Column="0"
                       FontSize="22" FontWeight="Bold" ToggleButton.Checked="ToggleButton5_Checked" ToggleButton.Unchecked="ToggleButton5_Unchecked"></ToggleButton>
 
-            <Button Name="Roll_Button" Click="Roll_Button_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,20" IsEnabled="{Binding Path=RollEnabled}" Grid.Row="5" Grid.Column="0" FontSize="22" FontWeight="Bold">Roll</Button>
+            <Button Name="Roll_Button" Click="Roll_Button_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="4,3" IsEnabled="{Binding Path=RollEnabled}" Grid.Row="6" Grid.Column="0" FontSize="22" FontWeight="Bold">Roll</Button>
 
-            <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Path=RollCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="{Binding Path=RollCount, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
 
         </Grid>
 
