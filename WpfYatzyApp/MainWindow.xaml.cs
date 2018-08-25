@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace WpfYatzyApp
 {
@@ -119,10 +107,10 @@ namespace WpfYatzyApp
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private List<Dice> diceList;
-        private Dictionary<string, List<Dice>> diceDictionary;
-        private Dictionary<string, bool> enabledTotalBonusDictionary;
-        private Dictionary<string, bool> enabledTotalSpecialDictionary;
+        private List<Dice> _diceList;
+        private Dictionary<string, List<Dice>> _diceDictionary;
+        private Dictionary<string, bool> _totalEnabledRegularFieldsDictionary;
+        private Dictionary<string, bool> _totalEnabledSpecialFieldsDictionary;
         private StringBuilder stringBuilder = new StringBuilder();
         private Random r = new Random();
 
@@ -131,10 +119,10 @@ namespace WpfYatzyApp
             InitializeComponent();
             DataContext = this;
 
-            diceList = new List<Dice>();
-            diceDictionary = new Dictionary<string, List<Dice>>();
-            enabledTotalBonusDictionary = new Dictionary<string, bool>();
-            enabledTotalSpecialDictionary = new Dictionary<string, bool>();
+            _diceList = new List<Dice>();
+            _diceDictionary = new Dictionary<string, List<Dice>>();
+            _totalEnabledRegularFieldsDictionary = new Dictionary<string, bool>();
+            _totalEnabledSpecialFieldsDictionary = new Dictionary<string, bool>();
 
             Dice1 = new Dice();
             Dice2 = new Dice();
@@ -145,43 +133,43 @@ namespace WpfYatzyApp
             RollEnabled = true;
             BonusValueEnabled = true;
 
-            AddEnabledTotalToBonusDictionary(nameof(OnesTotalEnabled), OnesTotalEnabled = true);
-            AddEnabledTotalToBonusDictionary(nameof(TwosTotalEnabled), TwosTotalEnabled = true);
-            AddEnabledTotalToBonusDictionary(nameof(ThreesTotalEnabled), ThreesTotalEnabled = true);
-            AddEnabledTotalToBonusDictionary(nameof(FoursTotalEnabled), FoursTotalEnabled = true);
-            AddEnabledTotalToBonusDictionary(nameof(FivesTotalEnabled), FivesTotalEnabled = true);
-            AddEnabledTotalToBonusDictionary(nameof(SixesTotalEnabled), SixesTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(OnesTotalEnabled), OnesTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(TwosTotalEnabled), TwosTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(ThreesTotalEnabled), ThreesTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(FoursTotalEnabled), FoursTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(FivesTotalEnabled), FivesTotalEnabled = true);
+            AddTotalEnabledRegularFieldsDictionary(nameof(SixesTotalEnabled), SixesTotalEnabled = true);
 
-            AddEnabledTotalToSpecialDictionary(nameof(OnePairTotalEnabled), OnePairTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(TwoPairTotalEnabled), TwoPairTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(ThreeOfAKindTotalEnabled), ThreeOfAKindTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(FourOfAKindTotalEnabled), FourOfAKindTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(SmallStraightTotalEnabled), SmallStraightTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(LargeStraightTotalEnabled), LargeStraightTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(FullHouseTotalEnabled), FullHouseTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(ChanceTotalEnabled), ChanceTotalEnabled = true);
-            AddEnabledTotalToSpecialDictionary(nameof(YatzyTotalEnabled), YatzyTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(OnePairTotalEnabled), OnePairTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(TwoPairTotalEnabled), TwoPairTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(ThreeOfAKindTotalEnabled), ThreeOfAKindTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(FourOfAKindTotalEnabled), FourOfAKindTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(SmallStraightTotalEnabled), SmallStraightTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(LargeStraightTotalEnabled), LargeStraightTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(FullHouseTotalEnabled), FullHouseTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(ChanceTotalEnabled), ChanceTotalEnabled = true);
+            AddTotalEnabledSpecialFieldsDictionary(nameof(YatzyTotalEnabled), YatzyTotalEnabled = true);
 
         }
 
-        private void AddEnabledTotalToBonusDictionary(string name, bool value)
+        private void AddTotalEnabledRegularFieldsDictionary(string name, bool value)
         {
-            enabledTotalBonusDictionary.Add(name, value);
+            _totalEnabledRegularFieldsDictionary.Add(name, value);
         }
 
-        private void UpdateEnabledTotalToBonusDictionary(string name, bool value)
+        private void UpdateTotalEnabledRegularFieldsDictionary(string name, bool value)
         {
-            enabledTotalBonusDictionary[name] = value;
+            _totalEnabledRegularFieldsDictionary[name] = value;
         }
 
-        private void AddEnabledTotalToSpecialDictionary(string name, bool value)
+        private void AddTotalEnabledSpecialFieldsDictionary(string name, bool value)
         {
-            enabledTotalSpecialDictionary.Add(name, value);
+            _totalEnabledSpecialFieldsDictionary.Add(name, value);
         }
 
-        private void UpdateEnabledTotalToSpecialDictionary(string name, bool value)
+        private void UpdateTotalEnabledSpecialFieldsDictionary(string name, bool value)
         {
-            enabledTotalSpecialDictionary[name] = value;
+            _totalEnabledSpecialFieldsDictionary[name] = value;
         }
 
         private void Roll_Button_Click(object sender, RoutedEventArgs e)
@@ -201,212 +189,247 @@ namespace WpfYatzyApp
         {
             if (OnesTotalEnabled == true)
             {
-                OnesTotal = diceDictionary["ones"].Select(x => x.Value).Sum();
+                OnesTotal = _diceDictionary["ones"].Select(x => x.Value).Sum();
             }
             if (TwosTotalEnabled == true)
             {
-                TwosTotal = diceDictionary["twos"].Select(x => x.Value).Sum();
+                TwosTotal = _diceDictionary["twos"].Select(x => x.Value).Sum();
             }
             if (ThreesTotalEnabled == true)
             {
-                ThreesTotal = diceDictionary["threes"].Select(x => x.Value).Sum();
+                ThreesTotal = _diceDictionary["threes"].Select(x => x.Value).Sum();
             }
             if (FoursTotalEnabled == true)
             {
-                FoursTotal = diceDictionary["fours"].Select(x => x.Value).Sum();
+                FoursTotal = _diceDictionary["fours"].Select(x => x.Value).Sum();
             }
             if (FivesTotalEnabled == true)
             {
-                FivesTotal = diceDictionary["fives"].Select(x => x.Value).Sum();
+                FivesTotal = _diceDictionary["fives"].Select(x => x.Value).Sum();
             }
             if (SixesTotalEnabled == true)
             {
-                SixesTotal = diceDictionary["sixes"].Select(x => x.Value).Sum();
+                SixesTotal = _diceDictionary["sixes"].Select(x => x.Value).Sum();
             }
             if (OnePairTotalEnabled == true)
             {
-                int highestOnePairTotal = 0;
-                foreach (var item in diceDictionary)
-                {
-                    if (item.Value.Count() >= 2)
-                    {
-                        var onePairTotal = item.Value.Select(x => x.Value).First() * 2;
-                        if (highestOnePairTotal < onePairTotal)
-                        {
-                            highestOnePairTotal = onePairTotal;
-                        }
-                    }
-                }
-                OnePairTotal = highestOnePairTotal;
+                OnePairTotal = CalculateOnePairTotal();
             }
             if (TwoPairTotalEnabled == true)
             {
-                int twoPairTotal = 0;
-                int amoutOfPairs = 0;
-                foreach (var item in diceDictionary)
-                {
-                    if (item.Value.Count() >= 2)
-                    {
-                        amoutOfPairs++;
-                        twoPairTotal += item.Value.Select(x => x.Value).First() * 2;
-                    }
-                }
-                if (amoutOfPairs >= 2)
-                {
-                    TwoPairTotal = twoPairTotal;
-                }
-                else
-                {
-                    TwoPairTotal = 0;
-                }
+                TwoPairTotal = CalculateTwoPairTotal();
             }
             if (ThreeOfAKindTotalEnabled == true)
             {
-                foreach (var item in diceDictionary)
-                {
-                    if (item.Value.Count() >= 3)
-                    {
-                        FourOfAKindTotal = item.Value.Select(x => x.Value).First() * 3;
-                        break;
-                    }
-                    else
-                    {
-                        FourOfAKindTotal = 0;
-                    }
-                }
+                ThreeOfAKindTotal = CalculateThreeOfAKindTotal();
             }
             if (FourOfAKindTotalEnabled == true)
             {
-                foreach (var item in diceDictionary)
-                {
-                    if (item.Value.Count() >= 4)
-                    {
-                        FourOfAKindTotal = item.Value.Select(x => x.Value).First() * 4;
-                        break;
-                    }
-                    else
-                    {
-                        FourOfAKindTotal = 0;
-                    }
-                }
+                FourOfAKindTotal = CalculateFourOfAKindTotal();
             }
             if (SmallStraightTotalEnabled == true)
             {
-                if (diceDictionary["ones"].Count() == 1 && diceDictionary["twos"].Count() == 1 
-                    && diceDictionary["threes"].Count() == 1 && diceDictionary["fours"].Count() == 1 
-                    && diceDictionary["fives"].Count() == 1)
-                {
-                    SmallStraightTotal = diceList.Select(x => x.Value).Sum();
-                }
-                else
-                {
-                    SmallStraightTotal = 0;
-                }
+                SmallStraightTotal = CalculateSmallStraightTotal();
             }
             if (LargeStraightTotalEnabled == true)
             {
-                if (diceDictionary["twos"].Count() == 1 && diceDictionary["threes"].Count() == 1
-                    && diceDictionary["fours"].Count() == 1 && diceDictionary["fives"].Count() == 1
-                    && diceDictionary["sixes"].Count() == 1)
-                {
-                    LargeStraightTotal = diceList.Select(x => x.Value).Sum();
-                }
-                else
-                {
-                    LargeStraightTotal = 0;
-                }
+                LargeStraightTotal = CalculateLargeStraightTotal();
             }
             if (FullHouseTotalEnabled == true)
             {
-                bool hasThreeOfAKind = false;
-                bool hasOnePair = false;
-                foreach (var item in diceDictionary)
-                {
-                    if (item.Value.Count() == 3)
-                    {
-                        hasThreeOfAKind = true;
-                    }
-                    if (item.Value.Count() == 2)
-                    {
-                        hasOnePair = true;
-                    }
-                }
-                if (hasThreeOfAKind && hasOnePair)
-                {
-                    FullHouseTotal = diceList.Select(x => x.Value).Sum();
-                }
-                else
-                {
-                    FullHouseTotal = 0;
-                }
+                FullHouseTotal = CalculateFullHouseTotal();
             }
             if (ChanceTotalEnabled == true)
             {
-                ChanceTotal = diceList.Select(x => x.Value).Sum();
+                ChanceTotal = CalculateChanceTotal();
             }
             if (YatzyTotalEnabled == true)
             {
-                foreach (var item in diceDictionary)
+                YatzyTotal = CalculateYatzyTotal();
+            }
+        }
+
+        private int CalculateOnePairTotal()
+        {
+            int highestOnePairTotal = 0;
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() >= 2)
                 {
-                    if (item.Value.Count() == 5)
+                    var onePairTotal = item.Value.Select(x => x.Value).First() * 2;
+                    if (highestOnePairTotal < onePairTotal)
                     {
-                        YatzyTotal = diceList.Select(x => x.Value).Sum() + 50;
-                        MessageBox.Show($"You got Yatzy!", "Congratulations!");
-                        break;
-                    }
-                    else
-                    {
-                        YatzyTotal = 0;
+                        highestOnePairTotal = onePairTotal;
                     }
                 }
             }
 
+            return highestOnePairTotal;
+        }
+
+        private int CalculateTwoPairTotal()
+        {
+            int twoPairTotal = 0;
+            int amoutOfPairs = 0;
+
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() >= 2)
+                {
+                    amoutOfPairs++;
+                    twoPairTotal += item.Value.Select(x => x.Value).First() * 2;
+                }
+            }
+
+            return amoutOfPairs >= 2 ? twoPairTotal : 0;
+        }
+
+        private int CalculateThreeOfAKindTotal()
+        {
+            int threeOfAKindTotal = 0;
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() >= 3)
+                {
+                    threeOfAKindTotal = item.Value.Select(x => x.Value).First() * 3;
+                    break;
+                }
+            }
+
+            return threeOfAKindTotal;
+        }
+
+        private int CalculateFourOfAKindTotal()
+        {
+            int fourOfAKindTotal = 0;
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() >= 4)
+                {
+                    fourOfAKindTotal = item.Value.Select(x => x.Value).First() * 4;
+                    break;
+                }
+            }
+
+            return fourOfAKindTotal;
+        }
+
+        private int CalculateSmallStraightTotal()
+        {
+            int smallStraightTotal = 0;
+            if (_diceDictionary["ones"].Count() == 1 && _diceDictionary["twos"].Count() == 1
+                && _diceDictionary["threes"].Count() == 1 && _diceDictionary["fours"].Count() == 1
+                && _diceDictionary["fives"].Count() == 1)
+            {
+                smallStraightTotal = _diceList.Select(x => x.Value).Sum();
+            }
+
+            return smallStraightTotal;
+        }
+
+        private int CalculateLargeStraightTotal()
+        {
+            int largeStraightTotal = 0;
+            if (_diceDictionary["twos"].Count() == 1 && _diceDictionary["threes"].Count() == 1
+                && _diceDictionary["fours"].Count() == 1 && _diceDictionary["fives"].Count() == 1
+                && _diceDictionary["sixes"].Count() == 1)
+            {
+                largeStraightTotal = _diceList.Select(x => x.Value).Sum();
+            }
+
+            return largeStraightTotal;
+        }
+
+        private int CalculateFullHouseTotal()
+        {
+            int fullHouseTotal = 0;
+            bool hasThreeOfAKind = false;
+            bool hasOnePair = false;
+
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() == 3)
+                {
+                    hasThreeOfAKind = true;
+                }
+                if (item.Value.Count() == 2)
+                {
+                    hasOnePair = true;
+                }
+            }
+            if (hasThreeOfAKind && hasOnePair)
+            {
+                fullHouseTotal = _diceList.Select(x => x.Value).Sum();
+            }
+
+            return fullHouseTotal;
+        }
+
+        private int CalculateChanceTotal()
+        {
+            return _diceList.Select(x => x.Value).Sum();
+        }
+
+        private int CalculateYatzyTotal()
+        {
+            int yatzyTotal = 0;
+            foreach (var item in _diceDictionary)
+            {
+                if (item.Value.Count() == 5)
+                {
+                    yatzyTotal = _diceList.Select(x => x.Value).Sum() + 50;
+                    MessageBox.Show($"You got Yatzy!", "Congratulations!");
+                    break;
+                }
+            }
+
+            return yatzyTotal;
         }
 
         private void UpdateDiceList()
         {
-            diceList.Clear();
-            diceList.Add(Dice1);
-            diceList.Add(Dice2);
-            diceList.Add(Dice3);
-            diceList.Add(Dice4);
-            diceList.Add(Dice5);
+            _diceList.Clear();
+            _diceList.Add(Dice1);
+            _diceList.Add(Dice2);
+            _diceList.Add(Dice3);
+            _diceList.Add(Dice4);
+            _diceList.Add(Dice5);
 
-            var onesList = diceList.Where(x => x.Value == 1).ToList();
-            var twosList = diceList.Where(x => x.Value == 2).ToList();
-            var threesList = diceList.Where(x => x.Value == 3).ToList();
-            var foursList = diceList.Where(x => x.Value == 4).ToList();
-            var fivesList = diceList.Where(x => x.Value == 5).ToList();
-            var sixesList = diceList.Where(x => x.Value == 6).ToList();
+            var onesList = _diceList.Where(x => x.Value == 1).ToList();
+            var twosList = _diceList.Where(x => x.Value == 2).ToList();
+            var threesList = _diceList.Where(x => x.Value == 3).ToList();
+            var foursList = _diceList.Where(x => x.Value == 4).ToList();
+            var fivesList = _diceList.Where(x => x.Value == 5).ToList();
+            var sixesList = _diceList.Where(x => x.Value == 6).ToList();
 
-            diceDictionary.Clear();
-            diceDictionary.Add("ones", onesList);
-            diceDictionary.Add("twos", twosList);
-            diceDictionary.Add("threes", threesList);
-            diceDictionary.Add("fours", foursList);
-            diceDictionary.Add("fives", fivesList);
-            diceDictionary.Add("sixes", sixesList);
+            _diceDictionary.Clear();
+            _diceDictionary.Add("ones", onesList);
+            _diceDictionary.Add("twos", twosList);
+            _diceDictionary.Add("threes", threesList);
+            _diceDictionary.Add("fours", foursList);
+            _diceDictionary.Add("fives", fivesList);
+            _diceDictionary.Add("sixes", sixesList);
         }
 
         private void RollDices()
         {
-            if (Dice1.Keep == false)
+            if (!Dice1.Keep)
             {
                 Dice1.Value = RollDice();
             }
-            if (Dice2.Keep == false)
+            if (!Dice2.Keep)
             {
                 Dice2.Value = RollDice();
             }
-            if (Dice3.Keep == false)
+            if (!Dice3.Keep)
             {
                 Dice3.Value = RollDice();
             }
-            if (Dice4.Keep == false)
+            if (!Dice4.Keep)
             {
                 Dice4.Value = RollDice();
             }
-            if (Dice5.Keep == false)
+            if (!Dice5.Keep)
             {
                 Dice5.Value = RollDice();
             }
@@ -505,8 +528,8 @@ namespace WpfYatzyApp
 
         private void CheckForCompletion()
         {
-            var isAllBonusValuesFalse = enabledTotalBonusDictionary.Values.All(x => x.Equals(false));
-            var isAllSpecialValuesFalse = enabledTotalSpecialDictionary.Values.All(x => x.Equals(false));
+            var isAllBonusValuesFalse = _totalEnabledRegularFieldsDictionary.Values.All(x => x.Equals(false));
+            var isAllSpecialValuesFalse = _totalEnabledSpecialFieldsDictionary.Values.All(x => x.Equals(false));
             if (isAllBonusValuesFalse == true && isAllSpecialValuesFalse == true)
             {
                 MessageBox.Show($"You got a score of {SumTotal}!", "Congratulations!");
@@ -519,12 +542,12 @@ namespace WpfYatzyApp
         {
             SmallSumTotal += smallSum;
         }
-
+        #region BonusButtonClicks Region
         private void OnesTotal_Button_Click(object sender, RoutedEventArgs e)
         {
             RollCount = 0;
             RollEnabled = true;
-            UpdateEnabledTotalToBonusDictionary(nameof(OnesTotalEnabled), OnesTotalEnabled = false);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(OnesTotalEnabled), OnesTotalEnabled = false);
             OnesTotal_Button.IsEnabled = false;
             UpdateSmallSum(OnesTotal);
             UpdateTotalSum(OnesTotal);
@@ -540,7 +563,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             TwosTotalEnabled = false;
-            UpdateEnabledTotalToBonusDictionary(nameof(TwosTotalEnabled), TwosTotalEnabled);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(TwosTotalEnabled), TwosTotalEnabled);
             TwosTotal_Button.IsEnabled = false;
             UpdateSmallSum(TwosTotal);
             UpdateTotalSum(TwosTotal);
@@ -556,7 +579,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             ThreesTotalEnabled = false;
-            UpdateEnabledTotalToBonusDictionary(nameof(ThreesTotalEnabled), ThreesTotalEnabled);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(ThreesTotalEnabled), ThreesTotalEnabled);
             ThreesTotal_Button.IsEnabled = false;
             UpdateSmallSum(ThreesTotal);
             UpdateTotalSum(ThreesTotal);
@@ -572,7 +595,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             FoursTotalEnabled = false;
-            UpdateEnabledTotalToBonusDictionary(nameof(FoursTotalEnabled), FoursTotalEnabled);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(FoursTotalEnabled), FoursTotalEnabled);
             FoursTotal_Button.IsEnabled = false;
             UpdateSmallSum(FoursTotal);
             UpdateTotalSum(FoursTotal);
@@ -588,7 +611,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             FivesTotalEnabled = false;
-            UpdateEnabledTotalToBonusDictionary(nameof(FivesTotalEnabled), FivesTotalEnabled);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(FivesTotalEnabled), FivesTotalEnabled);
             FivesTotal_Button.IsEnabled = false;
             UpdateSmallSum(FivesTotal);
             UpdateTotalSum(FivesTotal);
@@ -604,7 +627,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             SixesTotalEnabled = false;
-            UpdateEnabledTotalToBonusDictionary(nameof(SixesTotalEnabled), SixesTotalEnabled);
+            UpdateTotalEnabledRegularFieldsDictionary(nameof(SixesTotalEnabled), SixesTotalEnabled);
             SixesTotal_Button.IsEnabled = false;
             UpdateSmallSum(SixesTotal);
             UpdateTotalSum(SixesTotal);
@@ -614,7 +637,7 @@ namespace WpfYatzyApp
             UpdateDiceList();
             CalculateTotals();
         }
-
+        #endregion
         private void ResetGame_Button_Click(object sender, RoutedEventArgs e)
         {
             RollCount = 0;
@@ -664,16 +687,16 @@ namespace WpfYatzyApp
             ChanceTotal_Button.IsEnabled = true;
             YatzyTotal_Button.IsEnabled = true;
 
-            var bonusKeys = enabledTotalBonusDictionary.Keys.ToList();
+            var bonusKeys = _totalEnabledRegularFieldsDictionary.Keys.ToList();
             foreach (var item in bonusKeys)
             {
-                enabledTotalBonusDictionary[item] = true;
+                _totalEnabledRegularFieldsDictionary[item] = true;
             }
 
-            var speicalKeys = enabledTotalSpecialDictionary.Keys.ToList();
+            var speicalKeys = _totalEnabledSpecialFieldsDictionary.Keys.ToList();
             foreach (var item in speicalKeys)
             {
-                enabledTotalSpecialDictionary[item] = true;
+                _totalEnabledSpecialFieldsDictionary[item] = true;
             }
 
             OnesTotalEnabled = true;
@@ -692,7 +715,7 @@ namespace WpfYatzyApp
             ChanceTotalEnabled = true;
             YatzyTotalEnabled = true;
         }
-
+        #region SpecialButtonClicks Region
         private void OnePairTotal_Button_Click(object sender, RoutedEventArgs e)
         {
             RollCount = 0;
@@ -701,7 +724,7 @@ namespace WpfYatzyApp
             ResetKeepButtons();
             RollDices();
             OnePairTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(OnePairTotalEnabled), OnePairTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(OnePairTotalEnabled), OnePairTotalEnabled);
             OnePairTotal_Button.IsEnabled = false;
             UpdateDiceList();
             CalculateTotals();
@@ -713,7 +736,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             TwoPairTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(TwoPairTotalEnabled), TwoPairTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(TwoPairTotalEnabled), TwoPairTotalEnabled);
             TwoPairTotal_Button.IsEnabled = false;
             UpdateTotalSum(TwoPairTotal);
             CheckForCompletion();
@@ -728,7 +751,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             ThreeOfAKindTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(ThreeOfAKindTotalEnabled), ThreeOfAKindTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(ThreeOfAKindTotalEnabled), ThreeOfAKindTotalEnabled);
             ThreeOfAKindTotal_Button.IsEnabled = false;
             UpdateTotalSum(ThreeOfAKindTotal);
             CheckForCompletion();
@@ -743,7 +766,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             FourOfAKindTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(FourOfAKindTotalEnabled), FourOfAKindTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(FourOfAKindTotalEnabled), FourOfAKindTotalEnabled);
             FourOfAKindTotal_Button.IsEnabled = false;
             UpdateTotalSum(FourOfAKindTotal);
             CheckForCompletion();
@@ -758,7 +781,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             SmallStraightTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(SmallStraightTotalEnabled), SmallStraightTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(SmallStraightTotalEnabled), SmallStraightTotalEnabled);
             SmallStraightTotal_Button.IsEnabled = false;
             UpdateTotalSum(SmallStraightTotal);
             CheckForCompletion();
@@ -773,7 +796,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             LargeStraightTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(LargeStraightTotalEnabled), LargeStraightTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(LargeStraightTotalEnabled), LargeStraightTotalEnabled);
             LargeStraightTotal_Button.IsEnabled = false;
             UpdateTotalSum(LargeStraightTotal);
             CheckForCompletion();
@@ -788,7 +811,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             FullHouseTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(FullHouseTotalEnabled), FullHouseTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(FullHouseTotalEnabled), FullHouseTotalEnabled);
             FullHouseTotal_Button.IsEnabled = false;
             UpdateTotalSum(FullHouseTotal);
             CheckForCompletion();
@@ -803,7 +826,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             ChanceTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(ChanceTotalEnabled), ChanceTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(ChanceTotalEnabled), ChanceTotalEnabled);
             ChanceTotal_Button.IsEnabled = false;
             UpdateTotalSum(ChanceTotal);
             CheckForCompletion();
@@ -818,7 +841,7 @@ namespace WpfYatzyApp
             RollCount = 0;
             RollEnabled = true;
             YatzyTotalEnabled = false;
-            UpdateEnabledTotalToSpecialDictionary(nameof(YatzyTotalEnabled), YatzyTotalEnabled);
+            UpdateTotalEnabledSpecialFieldsDictionary(nameof(YatzyTotalEnabled), YatzyTotalEnabled);
             YatzyTotal_Button.IsEnabled = false;
             UpdateTotalSum(YatzyTotal);
             CheckForCompletion();
@@ -827,6 +850,6 @@ namespace WpfYatzyApp
             UpdateDiceList();
             CalculateTotals();
         }
-
+        #endregion
     }
 }

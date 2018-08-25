@@ -10,11 +10,6 @@ namespace WpfYatzyApp
 {
     public class Dice : INotifyPropertyChanged
     {
-        //public int Id { get; set; }
-        //public int Value { get; set; }
-        //public bool Keep { get; set; }
-
-        // Declare the event
         public event PropertyChangedEventHandler PropertyChanged;
 
         private bool _keep;
@@ -50,8 +45,6 @@ namespace WpfYatzyApp
             }
         }
 
-
-        // Create the OnPropertyChanged method to raise the event
         protected void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
