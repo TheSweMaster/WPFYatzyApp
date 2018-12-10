@@ -642,8 +642,10 @@ namespace WpfYatzyApp
         {
             RollCount = 0;
             RollEnabled = true;
+            BonusValueEnabled = true;
             SumTotal = 0;
             SmallSumTotal = 0;
+            BonusValue = 0;
             ResetKeepButtons();
             ResetScoreButtons();
             RollDices();
