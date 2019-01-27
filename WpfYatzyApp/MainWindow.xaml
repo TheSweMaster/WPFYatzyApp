@@ -41,7 +41,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+            
+            <Button Name="Highscore_Button" Click="Highscore_Button_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,2" Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Bold">Highscores</Button>
             <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Ones</TextBlock>
             <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Twos</TextBlock>
             <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" FontWeight="Bold">Threes</TextBlock>

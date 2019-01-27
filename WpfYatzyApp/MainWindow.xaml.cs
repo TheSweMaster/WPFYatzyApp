@@ -534,6 +534,8 @@ namespace WpfYatzyApp
             {
                 MessageBox.Show($"You got a score of {SumTotal}!", "Congratulations!");
                 RollEnabled = false;
+                Highscores.SaveScore(SumTotal);
+
                 return;
             }
         }
@@ -853,5 +855,11 @@ namespace WpfYatzyApp
             CalculateTotals();
         }
         #endregion
+
+        private void Highscore_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var highscoreWindow = new HighscoreWindow();
+            highscoreWindow.Show();
+        }
     }
 }

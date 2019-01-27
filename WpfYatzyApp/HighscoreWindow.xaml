@@ -1,0 +1,70 @@
+﻿<Window x:Class="WpfYatzyApp.HighscoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfYatzyApp"
+        mc:Ignorable="d"
+        Title="Yatzy Highscores" Height="450" Width="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+         </Grid.RowDefinitions>
+
+        <TextBlock Text="1:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="0" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="2:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="1" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="3:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="2" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="4:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="3" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="5:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="4" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="6:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="5" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="7:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="6" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="8:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="7" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="9:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="8" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="10:" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.Row="9" Grid.Column="0" FontSize="22" FontWeight="Bold"></TextBlock>
+
+        <TextBlock Text="{Binding Path=Highscore1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="0" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="1" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore3, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="2" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore4, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="3" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore5, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="4" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore6, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="5" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore7, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="6" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore8, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="7" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore9, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="8" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding Path=Highscore10, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Grid.Row="9" Grid.Column="1" TextAlignment="Center" FontSize="22" FontWeight="Bold"></TextBlock>
+        
+    </Grid>
+</Window>
