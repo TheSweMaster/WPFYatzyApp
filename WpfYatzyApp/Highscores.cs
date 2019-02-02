@@ -15,34 +15,34 @@ namespace WpfYatzyApp
 
         public static void SaveScore(int score)
         {
-            using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding))
             {
-                writer.Write($"{score};");
+                writer.Write($"{score}\n");
             }
         }
 
         public static List<int> GetHighscoreList()
         {
             var initList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
             if (!File.Exists(FilePath))
             {
                 return initList;
             }
 
             File.GetAccessControl(FilePath);
-            string text = File.ReadAllText(FilePath, Encoding);
-            var textList = text.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Take(10);
+            var textLines = File.ReadAllLines(FilePath, Encoding);
 
             var numberList = new List<int>();
-            foreach (var item in textList)
+            foreach (var textLine in textLines)
             {
-                numberList.Add(int.TryParse(item, out int res1) ? res1 : 0);
+                numberList.Add(int.TryParse(textLine, out int res1) ? res1 : 0);
             }
 
-            initList.AddRange(numberList);
+            numberList.AddRange(initList);
 
-            return initList
-                .OrderByDescending(s => s)
+            return numberList
+                .OrderByDescending(n => n)
                 .Take(10)
                 .ToList();
         }
