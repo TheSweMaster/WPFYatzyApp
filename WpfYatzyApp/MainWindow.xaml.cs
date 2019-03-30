@@ -116,6 +116,8 @@ namespace WpfYatzyApp
 
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             InitializeComponent();
             DataContext = this;
 
@@ -856,10 +858,23 @@ namespace WpfYatzyApp
         }
         #endregion
 
+        private static HighscoreWindow HighscoreWindow;
+
         private void Highscore_Button_Click(object sender, RoutedEventArgs e)
         {
-            var highscoreWindow = new HighscoreWindow();
-            highscoreWindow.Show();
+            if (HighscoreWindow != null && HighscoreWindow.IsVisible)
+            {
+                if (HighscoreWindow.WindowState == WindowState.Minimized)
+                {
+                    HighscoreWindow.WindowState = WindowState.Normal;
+                }
+                HighscoreWindow.Focus();
+            }
+            else
+            {
+                HighscoreWindow = new HighscoreWindow();
+                HighscoreWindow.Show();
+            }
         }
     }
 }

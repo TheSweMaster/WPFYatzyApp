@@ -57,6 +57,8 @@ namespace WpfYatzyApp
 
         public HighscoreWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             InitializeComponent();
             DataContext = this;
 
